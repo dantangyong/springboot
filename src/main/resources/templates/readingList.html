@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,9 +10,11 @@
 <div th:unless="${#lists.isEmpty(books)}">
     <dl th:each="book : ${books}">
         <dt class="bookHeadline">
-            <span th:text="${book.title}">Title</span> by
-            <span th:text="${book.author}">Author</span>
-            (ISBN: <span th:text="${book.isbn}">ISBN</span>)
+            <a th:href="'http://www.amazon.com/gp/product/'
+                 + ${book.isbn}
+                 + '/tag=' + ${amazonID}"
+               th:text="${book.title}">Title</a>
+
         </dt>
         <dd class="bookDescription">
  <span th:if="${book.description}"

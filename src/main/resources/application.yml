@@ -1,0 +1,30 @@
+server:
+  port: 8000
+
+#spring:
+#  main:
+#  show-banner: false
+
+  thymeleaf:
+    cache: false
+#  配置数据源
+#  datasource:
+#    url: jdbc:mysql://localhost/readinglist
+#    username: dbuser
+#    password: dbpass
+#    driver-class-name: com.mysql.jdbc.Driver 可不配置此项会自动识别，如果识别出错还是要配置
+#     jndi-name: java:/comp/env/jdbc/readingListDS 自定义连接池
+
+
+logging:
+  path: /var/logs/
+  file: BookWorm.log
+  level:
+    root: WARN
+    org.springframework.security: DEBUG
+#   自定义日志文件名称
+#  config:
+#    classpath:logging-config.xml
+
+amazon:
+  associateId: habuma-20

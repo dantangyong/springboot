@@ -13,6 +13,14 @@ import javax.persistence.Id;
 @Setter
 public class Book {
 
+    public Book( ) {
+        super();
+    }
+
+    public Book(String title) {
+        this.title = title;
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;

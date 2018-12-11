@@ -3,6 +3,7 @@ package com.example.demo.web;
 import com.example.demo.entity.Book;
 import com.example.demo.respository.BookRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
+@ConfigurationProperties(prefix="amazon")
 public class ReadingListController {
+
+    private String associateId;
 
     @Autowired
     private BookRespository bookRespository;
@@ -26,6 +30,7 @@ public class ReadingListController {
                 bookRespository.findByReader(reader);
         if (readingList != null) {
             model.addAttribute("books", readingList);
+            model.addAttribute("amazonID", associateId);
         }
         return "readingList";
     }
@@ -35,5 +40,8 @@ public class ReadingListController {
         book.setReader(reader);
         bookRespository.save(book);
         return "redirect:/{reader}";
+    }
+    public void setAssociateId(String associateId) {
+        this.associateId = associateId;
     }
 }
